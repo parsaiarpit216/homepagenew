@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="icon" type="image/webp" href="logo.webp">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARPIT PARSAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* DESIGN TOKENS */
+:root {
+  --bg-main: #19f5ea;
+  --bg-alt: #0b9df1;
+  --pink: #4d85fffb;
+  --blue: #4d79ff;
+  --yellow: #ffcc00;
+  --green: #f50606;
+  --text: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(6,255,243,0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  border: 3px solid var(--text);
+  padding: 5px 15px;
+  transform: rotate(-2deg);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+  background: var(--bg-alt);
+  border-bottom: 5px solid var(--text);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 0.9;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  background: var(--yellow);
+  padding: 0 18px;
+  border: 4px solid var(--text);
+  transform: skew(-5deg);
+  display: inline-block;
+}
+
+/* CENTER LINKS */
+.hero-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.hero-links a {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 3px solid var(--text);
+  background: white;
+  color: var(--text);
+  box-shadow: 4px 4px 0 var(--text);
+  transition: 0.2s;
+}
+
+.hero-links a:hover {
+  transform: translate(3px,3px);
+  box-shadow: 0 0 0 var(--text);
+  background: var(--yellow);
+}
+
+/* SECTIONS */
+section {
+  padding: 120px 10%;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+/* ACCORDION */
+.accordion-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.accordion-item {
+  margin-bottom: 25px;
+  border: 4px solid var(--text);
+  border-radius: 24px;
+  background: #f5e50b;
+  box-shadow: 10px 10px 0 var(--text);
+  transition: 0.3s;
+}
+
+.accordion-item:hover {
+  transform: translate(-5px,-5px);
+  box-shadow: 15px 15px 0 var(--text);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 30px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-content p {
+  padding: 0 30px 30px;
+  font-size: 1.1rem;
+}
+
+/* CONTACT */
+.contact-card {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 50px;
+  border: 4px solid var(--text);
+  border-radius: 40px;
+  box-shadow: 15px 15px 0 var(--blue);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 18px;
+  margin-bottom: 20px;
+  border: 3px solid var(--text);
+  border-radius: 15px;
+  font-weight: 700;
+}
+
+.btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--pink);
+  border: 4px solid var(--text);
+  border-radius: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 6px 6px 0 var(--text);
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translate(3px,3px);
+  box-shadow: 0 0 0 var(--text);
+}
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  padding: 60px;
+  text-align: center;
+  background: var(--text);
+  color: white;
+  font-weight: 800;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  h2{font-size:2.5rem;}
+  .hero-links{gap:14px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">HELLO WORLD.</div>
+  <ul>
+    <li><a href="#contact">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1 class="reveal">Hi, I'M ARPIT<br><span>PARSAI</span></h1>
+
+  <div class="hero-links reveal">
+    <a href="https://arpitp1.vercel.app/">My Work</a>
+    <a href="https://arpitp2.vercel.app/">My Major Projects</a>
+    <a href="https://arpitp3.vercel.app/">Watch Cartoons</a>
+    <a href="https://arpitp5.vercel.app">Live Games</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <p class="reveal" style="font-size:1.4rem;font-weight:700;color:#555">
+    I build fun stuff for cool people.
+  </p>
+</header>
+
+<section id="about" class="reveal">
+  <h2>ABOUT ARPIT.</h2>
+  <p style="max-width:700px;margin:auto;font-size:1.2rem;text-align:center">
+   He's a Creative frontend developer focused on bold visuals, motion, and delightful interactions.
+  He's Currently Working at Cognizant Technology Solutions,Noida,Delhi NCR............      Click on "MY WORK" above 
+👆to know more 
+</section>
+
+<section id="skills" class="reveal">
+  <h2>EXPLORE MORE.</h2>
+  <div class="accordion-container">
+    <div class="accordion-item">
+      <button class="accordion-header">CERTIFICATIONS &ACHIEVEMENTS<span>+</span></button>
+      <div class="accordion-content"><p>I strongly believe in continuous learning beyond the classroom. During my college, I have successfully qualified for the zonal round of the "National-Level Technical Quiz Competition" conducted by NIT Bhopal. I actively engage in national-level hackathons, government technology challenges, and E-Cell initiatives, experiences that have sharpened my innovative thinking and leadership abilities.
+My journey is reinforced by hands-on exposure through coding competitions, technical workshops, and diverse campus events, enabling me to bridge the gap between theoretical knowledge and real-world problem-solving..</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header">EVENTS &MANAGEMENT<span>+</span></button>
+      <div class="accordion-content"><p>As the member of the TECHFIZZ Club in my College, I have led the organization of TECHFEST events for four consecutive years. In addition, I have successfully managed college-level coding competitions, technical workshops  , and cultural festivals, seamlessly blending creativity, coordination, and leadership..</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header">WHAT DRIVES ME<span>+</span></button>
+      <div class="accordion-content"><p>I am passionate about solving real-world problems through technology, empowering teams, and continuously learning.My Journey so far is just a Glimpse--I'm excited for what's next.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>BIRTHDAY.</h2>
+  <p style="text-align:center;font-size:1.2rem">15th of March 2002.</p>
+</section>
+
+<section id="journey" class="reveal">
+  <h2>FAV. BOOKS &INTERESTS.</h2>
+  <p style="text-align:center;font-size:1.2rem">
+    Interests include Coding, Robotics, Internet of Things, MechaTronics.   Fav.Books Include "The big bang Theory","The Grand Design", "Universe in a Nutshell","A brief history of Time",and Many More.
+  </p>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>LET'S TALK.</h2>
+  <div class="contact-card">
+    <form action="https://formspree.io/f/meejgkel" method="POST">
+      <input type="text" name="name" placeholder="YOUR NAME" required />
+      <input type="email" name="email" placeholder="YOUR EMAIL" required />
+      <textarea name="message" rows="4" placeholder="YOUR MESSAGE" required></textarea>
+      <button class="btn">SEND IT 🚀</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  2025-26 © All Rights Reserved,MADE WITH LOVE & CAFFEINE by Arpit • 
+</footer>
+
+<script>
+/* ACCORDION */
+document.querySelectorAll('.accordion-header').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item = btn.parentElement;
+    const content = btn.nextElementSibling;
+    const open = item.classList.contains('active');
+
+    document.querySelectorAll('.accordion-item').forEach(i=>{
+      i.classList.remove('active');
+      i.querySelector('.accordion-content').style.maxHeight = null;
+      i.querySelector('span').innerText = '+';
+    });
+
+    if(!open){
+      item.classList.add('active');
+      content.style.maxHeight = content.scrollHeight + 'px';
+      btn.querySelector('span').innerText = '−';
+    }
+  });
+});
+
+/* REVEAL */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('active');
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
