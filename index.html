@@ -242,9 +242,35 @@ footer {
   .hero-links{gap:14px;}
 }
 </style>
+  .maintenance-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffcc00;
+  color: #1a1a1a;
+  font-weight: 800;
+  text-align: center;
+  padding: 12px 50px 12px 20px;
+  z-index: 2000;
+  border-bottom: 4px solid var(--text);
+}
+
+.maintenance-banner span {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
 </head>
 
 <body>
+  <div class="maintenance-banner">
+  🚧 Site under maintenance — some sections may be temporarily unavailable.
+  <span onclick="this.parentElement.style.display='none'">✕</span>
+</div>
+
 
 <nav>
   <div class="logo">HELLO WORLD.</div>
