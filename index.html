@@ -32,6 +32,57 @@ body {
   overflow-x: hidden;
 }
 
+/* MAINTENANCE OVERLAY */
+#maintenance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-main);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 0.5s ease;
+}
+
+.m-box {
+  background: white;
+  border: 6px solid var(--text);
+  padding: 40px;
+  box-shadow: 20px 20px 0 var(--text);
+  max-width: 600px;
+  transform: rotate(-1deg);
+}
+
+.m-box h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--yellow);
+  display: inline-block;
+  padding: 5px 15px;
+  border: 4px solid var(--text);
+  margin-bottom: 20px;
+}
+
+#timer-display {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--pink);
+  margin: 20px 0;
+  display: block;
+}
+
+.m-box p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
 /* NAV */
 nav {
   position: fixed;
@@ -240,11 +291,21 @@ footer {
 @media(max-width:768px){
   h2{font-size:2.5rem;}
   .hero-links{gap:14px;}
+  .m-box h1 { font-size: 2rem; }
 }
 </style>
 </head>
 
-<body>
+<body style="overflow: hidden;">
+
+<div id="maintenance-overlay">
+  <div class="m-box">
+    <h1>LOADING</h1>
+    <div id="timer-display">1</div>
+    <p>SITE UNDER MAINTENANCE!</p>
+  </div>
+  <p style="margin-top: 30px; font-weight: 800; color: var(--text); opacity: 0.6;">ARPIT PARSAI © All Rights Reserved</p>
+</div>
 
 <nav>
   <div class="logo">HELLO WORLD.</div>
@@ -325,6 +386,25 @@ My journey is reinforced by hands-on exposure through coding competitions, techn
 </footer>
 
 <script>
+/* COUNTDOWN LOGIC */
+let timeLeft = 1;
+const timerDisplay = document.getElementById('timer-display');
+const overlay = document.getElementById('maintenance-overlay');
+
+const countdown = setInterval(() => {
+    timeLeft--;
+    timerDisplay.innerText = timeLeft;
+    
+    if (timeLeft <= 0) {
+        clearInterval(countdown);
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 500); // Wait for fade out animation
+    }
+}, 1000);
+
 /* ACCORDION */
 document.querySelectorAll('.accordion-header').forEach(btn=>{
   btn.addEventListener('click',()=>{
