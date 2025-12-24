@@ -241,46 +241,10 @@ footer {
   h2{font-size:2.5rem;}
   .hero-links{gap:14px;}
 }
-  .maintenance-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #ffcc00;
-  color: #1a1a1a;
-  font-weight: 800;
-  text-align: center;
-  padding: 14px 50px;
-  z-index: 9999; /* higher than nav */
-  border-bottom: 4px solid #1a1a1a;
-}
-
-.maintenance-banner span {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-/* Push content down so banner doesn't overlap */
-body {
-  padding-top: 60px;
-}
-
 </style>
-  
-
 </head>
 
 <body>
-  <div class="maintenance-banner" id="maintenanceBanner">
-  🚧 Site under maintenance — some sections may be temporarily unavailable.
-  <span onclick="closeBanner()">✕</span>
-</div>
-
-
 
 <nav>
   <div class="logo">HELLO WORLD.</div>
@@ -296,7 +260,7 @@ body {
     <a href="https://arpitp1.vercel.app/">My Work</a>
     <a href="https://arpitp2.vercel.app/">My Major Projects</a>
     <a href="https://arpitp3.vercel.app/">Watch Cartoons</a>
-    <a href="https://arpitp6.vercel.app">Live Games</a>
+    <a href="https://arpitp5.vercel.app">Live Games</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -334,7 +298,7 @@ My journey is reinforced by hands-on exposure through coding competitions, techn
 
 <section id="projects" class="reveal">
   <h2>BIRTHDAY.</h2>
-  <p style="text-align:center;font-size:1.2rem">14th of March 2002.</p>
+  <p style="text-align:center;font-size:1.2rem">15th of March 2002.</p>
 </section>
 
 <section id="journey" class="reveal">
@@ -390,13 +354,6 @@ const obs = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  <script>
-function closeBanner() {
-  document.getElementById("maintenanceBanner").style.display = "none";
-  document.body.style.paddingTop = "0";
-}
-</script>
-
 </script>
 
 </body>
