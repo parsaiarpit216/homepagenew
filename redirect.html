@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 320px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #cbd5f5;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #22c55e;
+      border: none;
+      padding: 12px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    .hint {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Open in Browser</h1>
+    <p>For the best experience, please open this page in your browser.</p>
+
+    <button onclick="openExternal()">Open Now</button>
+
+    <div class="hint">
+      Tap ⋮ (top right) → Open in Browser
+    </div>
+  </div>
+
+  <script>
+    const targetUrl = "https://linkedin.com/in/arpitparsai1403"; // 🔁 CHANGE THIS
+
+    function isInstagram() {
+      return navigator.userAgent.includes("Instagram");
+    }
+
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function openExternal() {
+      if (isAndroid()) {
+        // Try opening in Chrome
+        window.location.href = "intent://" + targetUrl.replace(/^https?:\/\//, '') + "#Intent;scheme=https;package=com.android.chrome;end";
+      } else if (isIOS()) {
+        // iOS fallback (Safari)
+        window.location.href = targetUrl;
+      } else {
+        window.location.href = targetUrl;
+      }
+    }
+
+    // Auto redirect if NOT Instagram
+    if (!isInstagram()) {
+      window.location.replace(targetUrl);
+    }
+  </script>
+</body>
+</html>
